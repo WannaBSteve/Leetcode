@@ -1,0 +1,21 @@
+class Solution {                //dfs，但只有t22，m22
+public:
+    vector<string> generateParenthesis(int n) {
+        vector<string> res;
+        f(res,"",0,0,n);
+        return res;
+    }
+
+        void f(vector<string>&res,string str,int l,int r,int n)
+        {
+            if(l>n||r>n||r>l)return;                     //剪枝
+            if(l==n&&r==n)
+            {
+                res.push_back(str);
+                return;
+            }
+            f(res,str+'(',l+1,r,n);
+            f(res,str+')',l,r+1,n);
+            return;
+        }
+};                       
