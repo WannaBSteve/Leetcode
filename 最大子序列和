@@ -13,3 +13,12 @@ public:
         return ans;
     }
 };
+//另一种写法，更简洁，更能体现dp思想
+    int maxSubArray(vector<int>& nums) {
+        int m = nums[0];
+        for(int i = 1; i < nums.size(); i++) {
+            nums[i] = max(nums[i], nums[i] + nums[i-1]);               //尤其是这一步
+            m = max(m, nums[i]);
+        }
+        return m;
+    }
