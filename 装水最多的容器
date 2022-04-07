@@ -1,0 +1,32 @@
+class Solution {                                 //violence   n2
+public:
+    int maxArea(vector<int>& height) {
+        vector<int>dp;
+        int ans=0,n=height.size();
+        for(int i=0;i<n-1;i++)
+        {
+            for(int j=i+1;j<n;j++)
+            {
+                int x=j-i,y=min(height[i],height[j]);
+                int res=x*y;
+                ans=max(res,ans);
+            }
+        }
+        return ans;
+    }
+};
+
+class Solution {                                  //同样的思路，但复杂度是O(n)
+public:
+    int maxArea(vector<int>& height) {
+        if(height.size() <= 1) return -1;
+        int i = 0, j = height.size() - 1, res = 0;
+        while(i < j){
+            int h = min(height[i], height[j]);
+            res = max(res, h * (j - i));
+            if(height[i] < height[j]) ++i;
+            else --j;
+        }
+        return res;
+    }
+};
