@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int sum=0;
+        int ans=nums[0];
+        for(vector<int>::iterator it=nums.begin();it!=nums.end();it++)
+        {
+            if(sum<0)sum=*it;
+            else
+            sum+=*it;
+            ans=max(ans,sum);
+        }
+        return ans;
+    }
+};
