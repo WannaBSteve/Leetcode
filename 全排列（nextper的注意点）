@@ -1,0 +1,27 @@
+class Solution {
+public:
+    vector<vector<int>> permute(vector<int> nums) {
+    //注意：nextper函数的使用前要先确保数组是升序的！！！！！
+    
+        sort(nums.begin(),nums.end());
+        vector<vector<int>>res;
+        vector<int>store;
+        for(vector<int>::iterator it=nums.begin();it!=nums.end();it++)
+        {
+            store.push_back(*it);
+        }
+        res.push_back(store);
+        store.clear();
+        while(next_permutation(nums.begin(),nums.end()))
+        {
+                for(vector<int>::iterator it=nums.begin();it!=nums.end();it++)
+            {
+                store.push_back(*it);
+            }
+            res.push_back(store);
+            store.clear();
+            
+        }
+        return res;
+    }
+};
